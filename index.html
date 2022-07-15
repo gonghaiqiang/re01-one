@@ -1,159 +1,56 @@
 <!DOCTYPE html>
-<html lang="">
+<html lang="zh-CN">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <script src="./lib/jquery-3.1.1.js"></script>
+    <title>龚海强</title>
     <style>
-        html,
-        body {
-            width: 100%;
-            height: 100%;
+        body{
             margin: 0;
-        }
-        /* *号是通配选择器，可以选中页面中的所有标签 */
-        
-        * {
-            box-sizing: border-box;
-        }
-        
-        header {
-            height: 45px;
-            border-bottom: 1px solid gainsboro;
-            text-align: center;
-            line-height: 45px;
-        }
-        
-        footer {
-            height: 61px;
-            width: 100%;
-            border-top: 1px solid gainsboro;
-            /* 固定定位，相对于浏览器窗口进行定位 */
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            background-color: white;
-            /* 开启盒子布局 */
             display: flex;
-            justify-content: space-around;
-        }
-        
-        iframe {
-            width: 100%;
-            height: calc(100% - 45px - 61px);
-            border: none;
-        }
-        
-        .title {
-            position: relative;
-            top: 5px;
-        }
-        
-        .icon {
-            /* 将元素设置为块元素 */
-            display: block;
-            width: 30px;
-            height: 30px;
-            /* 设置背景图片 */
-            background-image: url(./lib/tabBar.png);
-            background-size: 100% 800%;
-            position: relative;
-            top: 5px;
-        }
-        /* 去掉a标签下划线 */
-        a {
-            text-decoration: none;
-            color: gray;
-        }
-        
-        a:nth-of-type(1)>span.icon {
-            background-position-y: 60px;
-        }
-        
-        a:nth-of-type(1)>span.title {
-            color: #F56A00;
-        }
-        
-        a:nth-of-type(2)>span.icon {
-            background-position-y: -30px;
-        }
-        
-        a:nth-of-type(3)>span.icon {
-            background-position-y: -90px;
-        }
-        
-        a:nth-of-type(4)>span.icon {
-            background-position-y: -150px;
-        }
-        
-        .cen {
-            left: -6px;
+            flex-direction: column;
+            background-image: url(https://ts1.cn.mm.bing.net/th/id/R-C.874ed740eeb227cf6372d5fe2321ea37?rik=EyYHi0quXhXhTA&riu=http%3a%2f%2fimage.qianye88.com%2fpic%2fba1481efcede12d66fe42610a40e64dc&ehk=tqFw1sdUmA6IVucop3QbB8S1%2bpSfdJ5nig4g2zC62Sk%3d&risl=&pid=ImgRaw&r=0);
+            background-repeat:no-repeat;
+            background-size:100% 100%;
+            background-attachment: fixed;
         }
     </style>
 </head>
 
 <body>
-    <!-- 入口文件 -->
-
-    <!-- 头部 -->
-
-    <header>首页</header>
-    <!-- 中间内容 -->
-    <iframe src="./home/index.html" name="content"></iframe>
-    <!-- 页脚功能按钮 -->
-    <footer>
-        <a href="./home/index.html" target="content">
-            <span class="icon"></span>
-            <span class="title">首页</span>
-        </a>
-        <a href="./news/index.html" target="content">
-            <span class="icon"></span>
-            <span class="title">新闻</span>
-        </a>
-        <a href="./car/index.html" target="content">
-            <span class="icon"></span>
-            <span class="title cen">购物车</span>
-        </a>
-        <a href="./main/index.html" target="content">
-            <span class="icon"></span>
-            <span class="title">我的</span>
-        </a>
-    </footer>
+    <dingbulan style="
+    justify-content: flex-end;
+    margin-left: auto;
+    ">
+        <button onclick="window.location.href='./lianxiwo.html'" type="button" id="add" style="width:120px;height: 40px;">联系我</button>
+    </dingbulan>
+    <touxianglan style="
+    padding: 40px;
+    text-align: center;
+    ">
+        <img src="https://s2.seikim.com/i/2022/07/15/r6yw5a.jpg" alt="白菜" width="200px" height="200px" style="border-radius: 100px;"></img>
+    </touxianglan>
+    <div style="
+    padding: 15px;
+    text-align: center;
+    font-size: 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    ">
+        <h1>你好啊</h1>
+        <p>我是龚海强</p>
+        <p>欢迎来到我的个人网站</p>
+    </div>
+    <div style="
+    padding: 40px;
+    text-align: center;
+    ">
+        <a href="https://space.bilibili.com/34786453">友情鸣谢</a>
+    </div>
 </body>
-<script>
-    // 找到页面的所有a标签
-    var as = $('a')
-        // 存放图标选中位置
-    var offsetArr = [60, 0, -60, -120]
-    var titleArr = ['首页', '资讯', '购物车', '我的']
-        // 该变量是用来记录当前被选中的a标签
-    var index = 0;
-    // 给4个A标签添加点击事件
-    as.click(function() {
-        // $('.icon')  找到所有图标
-        // .eq($(this).index())  找到图标中被点击的图标
-        // .css(）  是修改图片位置
-        $('.icon').eq($(this).index()).css({
-            'background-position-y': offsetArr[$(this).index()] + 'px'
-        })
-        $('.title').eq($(this).index()).css({
-            'color': '#F56A00'
-        })
-        $('header').text(titleArr[$(this).index()])
-        if (index != $(this).index()) {
-            $('.icon').eq(index).css({
-                'background-position-y': offsetArr[index] - 30 + 'px'
-            })
-            $('.title').eq(index).css({
-                'color': 'gray'
-            })
 
-        }
-        index = $(this).index()
-    })
-</script>
-
+</html>
 </html>
